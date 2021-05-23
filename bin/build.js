@@ -50,7 +50,8 @@ const attrsToString = attrs => {
 
 sourcIcons.forEach(fileName => {
   // const name = fileName.split('/')[3].replace(/ /g, '');
-  const ComponentName = upperCamelCase(fileName);
+  const ComponentName = upperCamelCase(fileName.split('.')[0]);
+
   const location = path.join(rootDir, 'src/icons', `${ComponentName}.js`);
   const defaultAttrs = {
     xmlns: 'http://www.w3.org/2000/svg',
