@@ -66,7 +66,12 @@ sourcIcons.forEach(fileName => {
     rest: '...rest',
   };
 
-  const source = fs.readFileSync(path.join(iconDir, fileName), 'utf-8');
+  let source = fs.readFileSync(path.join(iconDir, fileName), 'utf-8');
+
+  source = source.replace(
+    /<svg\b[^>]*?(?:viewBox=\"(\b[^"]*)\")?>|<\/svg>/g,
+    ''
+  );
 
   const element = `
     import React, {forwardRef} from 'react';
